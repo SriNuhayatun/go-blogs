@@ -50,7 +50,7 @@ namespace go_blogs
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Mobil}/{action=Index}/{id?}");//untuk menjalankan program pertama kali
+                    pattern: "{controller=Home}/{action=Index}/{id?}");//untuk menjalankan program pertama kali
             });
         }
     }
