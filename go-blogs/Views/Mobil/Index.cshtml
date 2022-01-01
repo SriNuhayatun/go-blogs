@@ -1,0 +1,55 @@
+﻿
+<h1>Ini Controller Mobil</h1>
+
+<hr />
+
+@*<h1>@ViewBag.namaSaya</h1>
+    <h1>@ViewData["nama"]</h1>*@
+
+@*@foreach (var data in ViewBag.mobils)
+    {
+        <h2>@data.IDRegistrasi</h2>
+        <h2>@data.Tipe</h2>
+        <h2>@data.Merk</h2>
+        <h2>@data.Varian</h2>
+        <hr />
+    }*@
+@*//1*@
+@*<h2>@ViewBag.mobils.IDRegistrasi</h2>
+    <h2>@ViewBag.mobils.Tipe</h2>
+    <h2>@ViewBag.mobils.Merk</h2>
+    <h2>@ViewBag.mobils.Varian</h2>*@
+
+@*//5*@
+@*@for(int a=0;a<3;a++){
+        <p>IDReg : @Model[a].IDRegistrasi</p>
+        <h2>Tipe : @Model[a].Tipe</h2>
+        <h2>Merk : @Model[a].Merk</h2>
+        <h2>Varian : @Model[a].Varian</h2>
+    }*@
+
+@*//2*@
+@*@foreach (var data in ViewBag.mobils)
+    {
+        <h2>@data.IDRegistrasi</h2>
+        <h2>@data.Tipe</h2>
+        <h2>@data.Merk</h2>
+        <h2>@data.Varian</h2>
+        <hr />
+    }*@
+
+@*//3*@
+@*<h2>@ViewBag.mobils.IDRegistrasi</h2>
+    <h2>@ViewBag.mobils.Tipe</h2>
+    <h2>@ViewBag.mobils.Merk</h2>
+    <h2>@ViewBag.mobils.Varian</h2>*@
+
+@*//4*@
+@foreach (var data in ViewBag.mobils)
+{
+    <h2>@data.IDRegistrasi</h2>
+    <h2>@data.Tipe</h2>
+    <h2>@data.Merk</h2>
+    <h2>@data.Varian</h2>
+    <hr />
+}
