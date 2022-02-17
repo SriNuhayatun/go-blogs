@@ -7,7 +7,7 @@ namespace go_blogs.Models
 {
     public class Mobil
     {
-        public int IDRegistrasi { get; set; }
+        public int Id { get; set; }
         public string Tipe { get; set; }
         public string Merk { get; set; }
         public string Varian { get; set; }

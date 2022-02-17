@@ -1,4 +1,5 @@
 ﻿using go_blogs.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -27,9 +28,14 @@ namespace go_blogs.Controllers
         {
             return View();
         }
+        [Authorize]
         public IActionResult isi_biodata()
         {
             return View("ubah");
+        }
+        public IActionResult Link()
+        {
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

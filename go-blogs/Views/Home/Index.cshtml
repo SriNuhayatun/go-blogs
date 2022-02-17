@@ -1,8 +1,21 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@{ 
+    Layout = "_Layout";
+}
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <img src="~/image/sakura.jpg" width="1200" height="600" alt="Alternate Text"/>
+    @*cara 1 pindah halaman*@
+    <br />
+    <a href="/Home/Link">Lihat Link Dari a href</a>
+
+    <br />
+
+    @*cara 2 pindah halaman tapi css nya ikut*@
+    <a asp-controller="Mobil" asp-action="Index">Lihat Link Dari Asp</a>
+    
 </div>

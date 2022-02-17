@@ -1,0 +1,54 @@
+﻿@model  BlogDashboard
+    <h3>Data Table</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Judul
+            </th>
+            <th>
+                Tanggal
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Penulis
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.blog)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Title
+                </td>
+                <td>
+                    @item.CreateDate
+                </td>
+                <td>
+                    @item.Status
+                </td>
+                <td>
+                    @item.User.Username
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a asp-action="Hapus" asp-route-id="@item.Id" title="Keluar" style="color:red"
+                       onclick="if (!confirm('Yakin Akan Menghapus Data Ini ? ')) { return false;}">Delete</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+
+
+</table>

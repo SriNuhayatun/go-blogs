@@ -47,11 +47,11 @@ namespace go_blogs.Controllers
 
             var banyakMobil = new Mobil[]
             {
-               new Mobil{ IDRegistrasi=1,Tipe="Sedan",Merk="Toyota",Varian="FT86"},
-               new Mobil{ IDRegistrasi=2,Tipe="SUV",Merk="Toyota",Varian="RAV4"},
-               new Mobil{ IDRegistrasi=3,Tipe="Sedan",Merk="Honda",Varian="Accord"},
-               new Mobil{ IDRegistrasi=4,Tipe="SUV",Merk="Honda",Varian="CRV"},
-               new Mobil{ IDRegistrasi=5,Tipe="Sedan",Merk="Honda",Varian="City"},
+               new Mobil{ Id=1,Tipe="Sedan",Merk="Toyota",Varian="FT86"},
+               new Mobil{ Id=2,Tipe="SUV",Merk="Toyota",Varian="RAV4"},
+               new Mobil{ Id=3,Tipe="Sedan",Merk="Honda",Varian="Accord"},
+               new Mobil{ Id=4,Tipe="SUV",Merk="Honda",Varian="CRV"},
+               new Mobil{ Id=5,Tipe="Sedan",Merk="Honda",Varian="City"},
 
             };
             //var cariMobil = banyakMobil.Where(x => x.Tipe=="Sedan");
