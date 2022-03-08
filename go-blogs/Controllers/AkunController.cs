@@ -1,4 +1,6 @@
-﻿using go_blogs.Models;
+﻿using go_blogs.Helper;
+using go_blogs.Models;
+using go_blogs.Services.BlogServices;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,9 +15,11 @@ namespace go_blogs.Controllers
     public class AkunController : Controller
     {
         private readonly AppDbContext _context;
-        public AkunController(AppDbContext context)
+        private readonly EmailServices _email;
+        public AkunController(AppDbContext context,EmailServices e)
         {
             _context = context;//_Context dimasukan konstruktor agar lebih ringkas
+            _email = e;
         }
         public IActionResult Daftar()
         {
@@ -25,6 +29,10 @@ namespace go_blogs.Controllers
         [HttpPost]
         public IActionResult Daftar(User datanya)
         {
+            int OTP = BanyakBantuan.BuatOTP();
+
+            _email.KirimEmail(datanya.Email, "Konfirmasi Daftar", "<h1 style='color:green'>Ini Dari Saya</h1>"+OTP);
+
             var deklarRole = _context.Tb_Roles.Where(x=>x.Id=="1").FirstOrDefault();
             datanya.Roles = deklarRole;
             _context.Add(datanya);//sama saja dengan insert into tb_User
@@ -73,7 +81,7 @@ namespace go_blogs.Controllers
                     var daftar = new List<Claim>
                     {
                         new Claim("Username",cariusername.Username),
-                        new Claim("Role",cariusername.Roles.Id)
+                        new Claim("Role",cariusername.Roles.Name)
                     };
                     //proses daftar auth
                     await HttpContext.SignInAsync(
@@ -83,9 +91,12 @@ namespace go_blogs.Controllers
                    );
                     if (cariusername.Roles.Id == "1")//admin
                     {
-                        return RedirectToAction(controllerName: "Blog", actionName: "Index");
+                        //return RedirectToAction(controllerName: "Blog", actionName: "Index
+                        return Redirect("/Admin/Home");
+                    }else if(cariusername.Roles.Id == "2")
+                    {
+                        return Redirect("/User/Home");
                     }
-                    //user
                     return RedirectToAction(controllerName: "Home", actionName: "Privacy");
                 }
                 ViewBag.pesan = "password salah";

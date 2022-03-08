@@ -1,4 +1,6 @@
 using go_blogs.Models;
+using go_blogs.Repositories.BlogRepository;
+using go_blogs.Services.BlogServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,8 +38,19 @@ namespace go_blogs
                 .AddCookie("CookieAuth",options =>
                 {
                     options.LoginPath = "/Akun/Masuk";
+                    options.AccessDeniedPath = "/Home/Dilarang";
                 }
             );
+            services.AddScoped<IBlogRepository, BlogRepository>();
+
+            services.AddScoped<IBlogServices, BlogServices>();
+
+            services.AddTransient<EmailServices>();
+
+            services.AddTransient<FileService>();
+
+            services.Configure<Email>(Configuration.GetSection("AturEmail"));
+
             services.AddControllersWithViews();
         }
 
@@ -65,9 +78,19 @@ namespace go_blogs
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapAreaControllerRoute(
+                    name: "AreaAdmin",
+                    areaName:"Admin",
+                    pattern: "Admin/{controller=Home}/{action=Index1}/{id?}");
+                endpoints.MapAreaControllerRoute(
+                    name: "AreaUser",
+                    areaName:"User",
+                    pattern: "User/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");//untuk menjalankan program pertama kali
+                  name: "default",
+                  pattern: "{controller=Home}/{action=Index}/{id?}");//untuk menjalankan program pertama kali
+
+
             });
         }
     }

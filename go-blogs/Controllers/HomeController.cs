@@ -1,4 +1,5 @@
 ﻿using go_blogs.Models;
+using go_blogs.Services.BlogServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,6 +14,7 @@ namespace go_blogs.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+       
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -37,6 +39,7 @@ namespace go_blogs.Controllers
         {
             return View();
         }
+        public IActionResult Dilarang() => View();
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -1,0 +1,13 @@
+﻿@model Blog
+
+<h1>Edit Blog</h1>
+
+<form asp-action="Ubah">
+    <input type="hidden" asp-for="Id" />
+    <input asp-for="Title" />
+    <input asp-for="Content" />
+    <input asp-for="CreateDate" />
+    <input asp-for="Status" />
+    <input asp-for="Image"/>
+    <input type="submit" value="Simpan" />
+</form>
